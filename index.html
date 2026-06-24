@@ -6,252 +6,23 @@
 	<title>Darinka: UI/UX Designer</title>
 	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, minimum-scale=1" />
 
-	<style>
-@font-face {
-    font-family: 'Font';
-    src: url('fonts/font-regular.woff2') format('woff2'),
-        url('fonts/font-regular.woff') format('woff');
-    font-weight: normal; font-style: normal;  font-display: swap;
-}
-
-@font-face {
-    font-family: 'Font';
-    src: url('fonts/font-semibold.woff2') format('woff2'),
-        url('fonts/font-semibold.woff') format('woff');
-    font-weight: 600;  font-style: normal;  font-display: swap;
-}
-
-body {
-	--black: #16161D;
-	--grey: #717980;
-	--pink: #f27477;
-	--violet: #8674F2;
-	--purple: #D58FD2;
-	--yellow: #ffff00;
-	--lightpink: #F4F0F6;
-	--gap: 10vw;
-	margin: 0; padding: 0; box-sizing: border-box; background: white;
-	font-family: 'Font', -apple-system, Roboto, Helvetica, sans-serif; font-weight: normal;
-	color: var(--black); font-size: 1.125rem; line-height: 2; letter-spacing: -0.02em; font-smooth: always; -webkit-font-smoothing: antialiased;
-	overflow-x: hidden; overflow-y: auto;
-	overscroll-behavior: none;
-}
-body.horizontal {
-	width: auto; height: 100vh; min-height: 10em; overflow-y: hidden; overflow-x: scroll; max-height: 100vh;
-}
-p {list-style: none;vertical-align: top;color: var(--grey);margin-top: 0;}
-ul, ol {padding-left: 20px;}
-li { padding-bottom: 8px; }
-li:last-child { padding-bottom: 0; }
-h1, h2, h3, h4, h5, h6 {font-weight: 600;margin: 4px 0 8px;color: var(--black);}
-h1, .h1 {font-size: 3.55em;line-height: 1.125;}
-h2, .h2 {font-size: 2.65em;line-height: 1;}
-h3, .h3 {font-size: 1.65em;line-height: 1.325;}
-h4, .h4 {font-size: 1.35em;line-height: 1.45;}
-h5, .h5 {font-size: 1.325em;line-height: 1.45;}
-h6, .h6 {font-size: 1em;line-height: 1.45; }
-em {font-style: italic;font-family: serif;font-size: 117%;line-height: 0;font-weight: normal;}
-address {line-height: 1.5;font-style: normal;margin-bottom: 1em;}
-a {color: var(--black);text-decoration: none;line-height: 1.625;font-weight: 600;background: var(--yellow);transition: all .125s ease-in; cursor: pointer; } 
-a:not(.case):hover { background-color: white; color: var(--pink); }
-a:not(.case):active { background-color: var(--pink); color: white; }
-nav a, welcome a, footer a, h2 a, h3 a, h4 a, h5 a, h6 a {background: none;line-height: inherit;}
-.grey { color: var(--grey); }		.bg-grey { background-color: var(--grey); }
-.pink { color: var(--pink); }		.bg-pink { background-color: var(--pink); }
-.violet { color: var(--violet); }	.bg-violet { background-color: var(--violet); }
-.purple { color: var(--purple); }	.bg-purple { background-color: var(--purple); }
-.yellow { color: var(--yellow); }	.bg-yellow { background-color: var(--yellow); }
-.black { color: var(--black); }	.bg-black { background-color: var(--black); }
-.white { color: white; }			
-
-header, footer {position: absolute;padding: 0 var(--gap);width: calc(100vw - var(--gap) * 2);}
-body.horizontal header,
-body.horizontal footer {position: fixed;z-index: 9;}
-header {display: flex;align-items: center;flex-direction: row;margin-top: 4em;}
-header h1.logo {margin: 0 0.5em 0 0;position: relative;z-index: 9;}
-header img {margin: 0;min-width: 84px;}
-header address {font-size: 1em;line-height: 1;display: inline-block;padding: 0 2em;margin: -8px auto 0 0;letter-spacing: normal;font-style: normal;position: relative;z-index: 9;border-left: 1px solid var(--grey);}
-header nav {margin-top: 8px;}
-header nav svg line { stroke: var(--black); stroke-width: 2; }
-header nav a:hover { background-color: transparent; }
-
-#layoutbox {height: 100%;}	
-main {padding: 10em var(--gap);}
-body.horizontal main {display: flex;flex-wrap: nowrap;flex-direction: row;height: calc(95vh - 20em);}
-body.horizontal main > * {min-width: 600px;padding-left: var(--gap);margin-right: var(--gap);margin-top: 4em;flex-shrink: 0;align-self: center;}
-
-overlay {transform: translateX(-100%);position: fixed;top: 0;left: 0;width: auto; height: calc(100vh - 20em + 20px);background: var(--lightpink);color: white;padding: 10em var(--gap);transition: transform .125s ease-in;display: flex;flex-direction: column;}
-body.open-menu overlay { transform: translateX(0); }
-ul#menu { padding: 0; margin: auto 0;}
-ul#menu li a {font-size: 6em;letter-spacing: -0.05em;line-height: 1;color: var(--pink);opacity: 0.741;display: block;margin: 0.147em 0;}
-ul#menu li {margin: 0;position: relative;display: block;}
-ul#menu li a:hover { background: transparent; }
-ul#menu li::after {content: '';display: block;width: 110%;height: 100%;top: 0;bottom: 0;position: absolute;background: var(--lightpink);z-index: 0;opacity: 0.5;transform: translateX(-110%);padding: 1em;transition: transform .2s cubic-bezier(1,-0.24,.92,1.29);z-index: 0;pointer-events: none;}
-ul#menu li:hover::after { transform: translateX(-10%); }
-overlay a[data-action=close-menu] {position: absolute;top: 0;left: calc(100vw - var(--gap) * 3);padding: 24px var(--gap);visibility: hidden;}
-a[data-action=open-menu] line { transition: all .25s ease-in; }
-body.open-menu a[data-action=open-menu] line:nth-child(1) {transform: rotate(45deg) translateX(6px);}
-body.open-menu a[data-action=open-menu] line:nth-child(2) {transform: rotate(-45deg) translateY(12px) translateX(-13px);}
-body.open-menu a[data-action=open-menu] line:nth-child(3) { transform: scale(0); }
-
-footer {position: relative;font-size: 10pt;bottom: 0;margin-bottom: 6vh;}
-footer nav ul { list-style: none; display: flex; padding: 0; flex-wrap: wrap; }
-footer nav ul li { padding: 0 2em 0 0; color: var(--black); white-space: nowrap;}
-footer nav ul li:last-child { margin-left: auto; padding-right: 0; }
-
-::selection { background: var(--pink); color: white; } 
-
-/* sections */
-body.horizontal main > welcome { padding-left: 0; }
-welcome h1 {max-width: 14ch;padding: 0.75em 0;}
-welcome p {font-size: 1.45em;padding-bottom: 2em;line-height: 1.75;max-width: 36ch;}
-
-body.horizontal main > works {padding-left: 0;margin-right: 0;}
-works > ul {display: flex;width: auto;list-style: none;align-items: center;height: 100%;padding: 0;}
-works > ul > li { display: flex;flex-shrink: 0;position: relative;align-items: center;}
-figure, img {margin: 0 0 3em;max-width: 100%;display: block;}
-figure img { width: 100%; }
-figcaption {margin: 3em 0 0;}
-
-works h3 {font-size: 1em; }
-works h3::after { content: '.'; color: var(--yellow); }
-works figure {width: 320px;padding-right: calc(var(--gap) / 1.5);padding-left: var(--gap);}
-works figure > a {display: flex;width: 100%;height: auto;border-radius: 5px;position: relative;align-items: center;justify-content: center;}
-works figure a img {width: 100%; font-size: 0;}
-works figure a img:last-child {position: absolute;max-width: 460px;width: auto;height: auto;transition: all .2s ease-in; opacity: 0; transform: translateY(-8px); }
-works figure a:hover img:last-child { opacity: 1; transform: translateY(0); }
-
-works li:nth-child(1) figure a img:last-child { width: 174px; right: -30%; top: 5%; }
-works li:nth-child(2) figure a img:last-child { width: 460px; left: -20%; top: 20%; }
-works li:nth-child(3) figure a img:last-child {width: 250px;left: -30%;top: 22%;}
-works li:nth-child(4) figure a img:last-child { width: 174px; right: -20%; top: 2%; }
-works li:nth-child(5) figure a img:last-child { width: 300px; right: -30%; bottom: -8%; }
-works li:nth-child(6) figure a img:last-child {width: 390px;left: -15%;top: 25%;}
-works li:nth-child(7) figure a img:last-child { width: 300px; right: -20%; bottom: -10%; }
-
-work {display: none;position: relative;height: 100vh; top: 0;left: 0;border: 0;padding:0;z-index: 1; animation: showWork .325s ease-out forwards; }
-work > div {box-sizing: border-box;padding: 10em var(--gap) 10em calc(var(--gap) / 1.5);display: flex;align-items: center;height: 100%;}
-work > div > img { max-width: 9999px;margin: 0 32px 0 0; height: 100%; width: auto; background: rgba(255,255,255,0.2);}
-work p, work ul {color: white;list-style-type: disc;margin-bottom: 2em;}
-work article {max-width: 50ch;margin-left: calc(var(--gap) / 2);}
-work ul li { padding-bottom: 0; }
-work h3 {margin-bottom: 24px;}
-work h4 { margin-bottom: 1em; }
-work.open-case  { display: block; }
-.close-case {float: right;background: transparent;text-decoration: underline;text-decoration-color: var(--yellow);color: white;font-size: 0.8em;margin: 0.2em 0 0; }
-.bg-yellow .close-case { color: inherit; }
-.close-button { position: absolute; left: 0; top: 8em; width:50px;height:50px;display:flex;align-items: center; justify-content: center; }
-.close-button svg line { stroke: var(--black); stroke-width:2px; }
-work.bg-yellow  p, work.bg-yellow ul { color: inherit; }
-work::before { content: ''; display: block; background: white; float: right; position: absolute; right: 0; top: 0; height: 100%; width: 100%; animation: showWork2 .75s .125s ease-out forwards; }
-@keyframes showWork2 { 0% { width: 100%; }  100% { width: 0; }}
-@keyframes showWork {  0% { opacity: 0; }   100% { opacity: 1; }}
-
-body.horizontal main > blog { margin-top: 1em;}
-blog h4::after { content: '.'; color: var(--yellow); }
-excerpts {display: grid;grid-template-columns: minmax(auto, 200px) auto;grid-column-gap: 24px;grid-row-gap: 32px;padding: 40px 0 32px;}
-excerpts :nth-child(odd) { display: block; }
-excerpts :nth-child(even) { margin-top: -2px; max-width: 22ch; }
-
-body.horizontal main > tiles {margin-right: 0;}
-tiles {display: grid;grid-template-columns: repeat(7, 142px);grid-column-gap: 32px;grid-template-rows: repeat(17, 60px);}
-tiles > div {padding: 2em 32px 20px 40px;box-sizing: border-box;margin-top: 32px;border-radius: 5px;}
-tiles > div:nth-child(1) {grid-column: 1 / span 2;grid-row: 3 / span 6;background: #F6F6F6;margin-top: 12px;}
-tiles > div:nth-child(2) {grid-column: 1 / span 2;grid-row: 9 / span 6;margin-bottom: 40px;}
-tiles > div:nth-child(3) { grid-column: 3 / span 2; grid-row: 1 / span 5; }
-tiles > div:nth-child(4) { grid-column: 3 / span 3; grid-row: 6 / span 5;  background: var(--lightpink); position: relative; }
-tiles > div:nth-child(5) {grid-column: 3 / span 3;grid-row: 11 / span 6;margin-bottom: 40px;}
-tiles > div:nth-child(6) {grid-column: 5 / span 3;grid-row: 3 / span 3;margin-top: 12px;}
-tiles > div:nth-child(7) { grid-column: 6 / span 2; grid-row: 6 / span 7; }
-tiles p + h2 {margin-top: 0;margin-bottom: 32px;}
-tiles p { max-width: 24ch; }
-tiles > div:nth-child(1) h2 {margin-bottom: 56px;}
-tiles > div:nth-child(1) p {max-width: 15ch;}
-tiles > div:nth-child(2) ul {margin: 8px 0;}
-tiles > div:nth-child(3) img { margin: 32px 0 0; }
-tiles > div:nth-child(4) img {position: absolute;right: 0;top: 0;margin: 38px;}
-tiles > div:nth-child(7) h2 { margin-bottom: 32px;  }
-tiles > div:nth-child(7) a {background: transparent;color: white;text-decoration: underline;text-decoration-color: var(--yellow);}
-tiles > div:nth-child(7) a:hover { text-decoration-color: var(--pink); }
-
-body.horizontal main > me {padding-left: 32px;min-width: 460px;}
-me div {position: relative;bottom: 4.75em;}
-me div::before {content: '';background: var(--purple);position: absolute;width: 100%;height: 80%;bottom: 0;z-index: -1;border-radius: 5px;}
-me img {border-radius: 0 0 0 5px;height: 36em;width: auto;}
-
-body.horizontal main > about {padding-left: 0;}
-about {max-width: 60ch; }
-about :first-child { margin-bottom: 24px; margin-top: -40px; }
-about p { padding-top: 12px; }
-
-references img {margin: -4em 0 0;}
-
-body.horizontal main > end { min-width: 0; padding-left: 0; }
-
-
-/* RESPONSIVE */
-@media only screen and (max-height: 1200px) {
-	body {
-		font-size: 0.85rem;
-	}
-	tiles {grid-template-rows: repeat(17, 50px);grid-template-columns: repeat(7, 112px);}
-	me div {bottom: 3.65em;}
-
-@media only screen and (max-width: 1024px) {
-	body {
-		--gap: 7%;
-	}
-	html {scroll-behavior: smooth; }
-	main { padding: var(--gap); }
-
-	header {position: sticky;width: 100vw;margin-top: 0;padding: 12px var(--gap);top: 0;background: white;z-index: 99;box-sizing: border-box;}	
-
-	body main > * {padding-top: var(--gap);margin-bottom: 0;display: block;width: 100%;height: auto;clear: both;}
-	
-	photo img {max-height: 75vw;margin: 0 auto;}
-	
-	works > ul {flex-wrap: wrap;justify-content: space-between;height: auto;}
-	works > ul > li {flex-direction: column; }
-	works figure a img:last-child { display: none; }
-	work {height: auto;width: 100vw;position: fixed;top: 0; height: 110vh; z-index: 99;overflow-y: scroll;}
-	work > div {flex-direction: column;padding: var(--gap);}
-	work > div > img { max-width: 100%; height: auto; margin: 16px 0; }
-	works figure { padding: 0; }
-	work article { margin-left: 0; padding-bottom: 32px; padding-top; 32px; }
-	.close-button { position: fixed; top: 16px; }
-	
-	tiles {display: flex !important;width: calc(100% + 32px) !important;flex-wrap: wrap;margin-bottom: calc(2px - var(--gap) - 16px) !important;}
-	tiles > div {margin-right: 32px;margin-top: 32px !important;margin-bottom: 0 !important;flex-shrink: 1;flex-grow: 1;max-width: 100%;}
-	
-	references img { margin-top: var(--gap); }
-	
-	footer nav ul li:last-child{ width:100%; padding:1em 0; }
-	footer nav ul li:last-child span { display: inline-block; transform: rotate(90deg); }
-}
-
-@media only screen and (max-width: 720px) {
-	body {
-		font-size: 0.85rem;
-		--gap: 5%;
-	}
-	h1, .h1 {font-size: 3.35em; }
-
-	overlay { width: 90vw; }
-	overlay a[data-action=close-menu] { visibility: visible; }
-	
-	works > ul > li { width: 100%; }
-
-}
-	</style>
+	<link rel="stylesheet" href="style.css" />
 </head> 
 
 <body>
 
+<svg class="svg-sprite" aria-hidden="true" focusable="false">
+	<symbol id="icon-star" viewBox="0 0 17 16">
+		<path fill="#fbbc04" d="m5.7 5.1-5.3.6-.4.4q0 .2.2.5L4 10l-1 5.2q-.1.3.1.5t.5 0l4.6-2.6L13 16h.5q.3-.3.2-.6l-1-5.2 3.8-3.5q.3-.3.2-.5t-.4-.4L11 5.1 8.8.3q0-.3-.5-.3Q8 0 8 .3z" />
+	</symbol>
+</svg>
+
 <div id="layoutbox">
 	<header>
 		<h1 class="logo"><img src="img/logo.png" alt="Darinka - signature" /></h1>
+		<p class="header-title">Senior Freelance Web Designer</p>
 		<address>
-			<a href="mailto:dtyrpak@gmail.com">dtyrpak@gmail.com</a>
+			<a class="button header-email" href="mailto:dtyrpak@gmail.com">dtyrpak@gmail.com</a>
 		</address>
 		<nav>
 			<a data-action="open-menu" title="Click to open menu">
@@ -280,13 +51,13 @@ body.horizontal main > end { min-width: 0; padding-left: 0; }
 	
 	<main>
 		<welcome>
-			<h1>	Your website design 
-				in&nbsp;good hands.</h1>
-			<p>
-				I build websites for companies, agencies and start-ups.  
-				15+&nbsp;years of experience as a freelance UI/UX designer.
+			<img class="welcome-avatar" src="img/avatar.webp" alt="Darina Kostelníková" />
+			<h1>Your web design<br />in&nbsp;good hands</h1>
+			<p>Top-tier design solutions for companies and agencies.<br />
+				15+ years of experience as a UI/UX designer &amp; developer.</p>
+			<p class="project-prompt">
+				<span>Scroll ⟶ to see</span> <a href="#works">featured projects</a>
 			</p>
-			<img src="img/certification.png" alt="Certification and awards - Appeared in net magazine, Elite Envato author, Process Masterclass certified completion, UX Process certified completion" />
 						
 		</welcome>
 		
@@ -294,440 +65,210 @@ body.horizontal main > end { min-width: 0; padding-left: 0; }
 			<ul>
 				<li>
 					<figure>
-						<a class="case bg-pink">
-							<img loading="lazy" src="img/inside-watertaps.png" alt="collage of web design art" />
-							<img loading="lazy" src="img/outside-watertaps.png" alt="collage of web design art" />
+						<a href="project-1.html">
+							<img loading="lazy" src="img/projects/project_01.webp" alt="Website and mobile app project thumbnail" />
 						</a>
 						<figcaption>
-							<h3>WEBSITE <em>&amp;</em> MOBILE APP</h3>
-							<p>Design, Branding, Illustration</p>
+							<h3>Digits Figma template</h3>
+							<p>Design and marketing</p>
 						</figcaption>
 					</figure>
-					<work id="case1" class="bg-pink">
-					<a class="close-button" onClick="closeCase('case1')" title="Click to close this case study">
-						<svg width="14" height="14" viewBox="0 0 14 14">
-							<line x1="1" y1="1" x2="14" y2="14" />
-							<line x1="14" y1="1" x2="1" y2="14" />
-						</svg>
-					</a>
-					<div>
-						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/8861471/media/957fcc6bd0f649cc6443a8f3fe9c52d2.png" alt="Water refill website UI/UX design"/>
-						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/8861471/media/efe9dfb7bf3593cc608e762f083fe74e.png" alt="Water refill website UI/UX design"/>
-						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/8861471/media/908548f9ec13145dd5e44f7ce03525fc.jpg" alt="Water refill website UI/UX design"/>
-						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/8861471/media/115973cf89ed3a4741c091262236f4a1.png" alt="Water refill website UI/UX design"/>
-						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/8861471/media/ebf735cdbcdb1a9a95ffdf4b9059ffad.jpg" alt="Water refill website UI/UX design"/>
-						<article>
-							<a onClick="closeCase('case1')" class="close-case" title="Click to close this case study">Close this</a>
-							<h3 class="h6 yellow">Website <em>&amp;</em> Mobile App</h3>
-							<h4 class="h2">WaterTaps</h4>
-							 
-							<p class="h4"><strong>Task:</strong> To design landing pages with mobile & desktop app
-							for a company that navigates people to refill their reusable water bottles with free tap water.</p>
-							<p>A project good for the planet, WaterTaps was a dream to work on. I was honored to be such an integral part of it. </p>
-							
-							<h5 class="h6">Deliverables: </h5>
-							<ul>
-								<li>Design direction</li>
-								<li>Vector logo & branding for social media</li>
-								<li>Design of all landing pages in Figma</li>
-								<li>App's UI/UX for mobile and desktop in Figma</li>
-							</ul>
-							
-							<h5 class="h6">Challenges:</h5>
-							<ul>
-								<li>This was a larger project, as I was the main designer for everything. I felt a lot of responsibility, but also pride and joy when we finished.</li>
-								<li>A desktop app, where you have a lot of space, is different than it's mobile counterpart. Yet they still have to present the same. This was interesting and challenging to figure out.</li>
-								<li>A lot of illustrated graphics was needed for every landing page. I helped myself with a illustration library which let me compose all the images more easily.</li>
-							</ul>
-						</article>
-					</div>
-					</work>
+				</li>
+				<li>
+					<figure class="wide">
+						<a href="project-2.html">
+							<img loading="lazy" src="img/projects/project_02.webp" alt="Web app project thumbnail" />
+						</a>
+						<figcaption>
+							<h3>slovakia.com travel directory</h3>
+							<p>Design and WordPress development</p>
+						</figcaption>
+					</figure>
 				</li>
 				<li>
 					<figure>
-						<a class="case bg-yellow">
-							<img loading="lazy" width="320" src="img/inside-reallist.png" alt="collage of web design art" />
-							<img loading="lazy" src="img/outside-reallist.png" alt="collage of web design art" />
+						<a href="project-3.html">
+							<img loading="lazy" src="img/projects/project_03.webp" alt="Branding guide and website project thumbnail" />
 						</a>
 						<figcaption>
-							<h3>WEB APP</h3>
-							<p>UI/UX, Branding</p>
+							<h3>Medicine delivery app</h3>
+							<p>UI/UX design</p>
 						</figcaption>
 					</figure>
-					<work id="case2" class="bg-yellow">
-					<a class="close-button bg-pink" onClick="closeCase('case2')" title="Click to close this case study">
-						<svg width="14" height="14" viewBox="0 0 14 14">
-							<line x1="1" y1="1" x2="14" y2="14" />
-							<line x1="14" y1="1" x2="1" y2="14" />
-						</svg>
-					</a>
-					<div>
-						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/6743994/dribbble.png" alt=" website UI/UX design"/>
-						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/6743994/attachments/1440003/search.png" alt=" website UI/UX design"/>
-						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/6743994/attachments/1440004/leaderboard.png" alt=" website UI/UX design"/>
-						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/6743994/attachments/1440006/property.png" alt=" website UI/UX design"/>
-						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/6743994/attachments/1440012/investor_12.04.33.png" alt=" website UI/UX design"/>
-						<article>
-							<a onClick="closeCase('case2')" class="close-case">Close this</a>
-							<h3 class="h6 pink">Web App</h3>
-							<h4 class="h2">RealList</h4>
-							 
-							<p class="h4"><strong>Task:</strong> To design a real estate investors' social network as a proof of concept.  </p>
-							<p>This website would allow investors to connect to each other, scout properties and investments, and create funds. It was a fun project for me! I love doing anything that revolves around the world of real estate.</p>
-							
-							<h5 class="h6">Deliverables: </h5>
-							<ul>
-								<li>Design direction</li>
-								<li>Vector logo</li>
-								<li>UI/UX prototype in Adobe XD</li>
-							</ul>
-							
-							<h5 class="h6">Challenges:</h5>
-							<ul>
-								<li>Although I prefer Figma, it was very interesting designing in Adobe XD. Since the time I started with web design more than 10 years ago, the software changed a lot. I cannot emphasise enough how lucky we are to have the correct tools for the job.</li>
-								<li>I got only a few very basic wireframes from the client and my job was to craft that into a clean & modern-looking user interface.</li>
-							</ul>
-						</article>
-					</div>
-					</work>
 				</li>
 				<li>
 					<figure>
-						<a class="case bg-violet">
-							<img loading="lazy" width="320" src="img/inside-aksmihulova.png" alt="collage of web design art" />
-							<img loading="lazy" src="img/outside-aksmihulova.png" alt="collage of web design art" />
+						<a href="project-4.html">
+							<img loading="lazy" src="img/projects/project_04.webp" alt="Website redesign project thumbnail" />
 						</a>
 						<figcaption>
-							<h3>BRANDING GUIDE <em>&amp;</em> WEBSITE</h3>
-							<p>Style Guide, Design, WordPress</p>
+							<h3>Interior panels e-commerce</h3>
+							<p>Design</p>
 						</figcaption>
 					</figure>
-					<work id="case3" class="bg-violet">
-					<a class="close-button" onClick="closeCase('case3')" title="Click to close this case study">
-						<svg width="14" height="14" viewBox="0 0 14 14">
-							<line x1="1" y1="1" x2="14" y2="14" />
-							<line x1="14" y1="1" x2="1" y2="14" />
-						</svg>
-					</a>
-					<div>
-						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/10720953/media/6729e4ec29b7a4aed9a0feced58b4195.png" alt=" website UI/UX design"/>
-						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/2366320/attachments/1500291/aksmihulova.sk_en_.png" alt=" website UI/UX design"/>
-						<article>
-							<a onClick="closeCase('case3')" class="close-case">Close this</a>
-							<h3 class="h6 yellow">Branding Guide <em>&amp;</em> Website</h3>
-							<h4 class="h2">AKSmihulova</h4>
-							 
-							<p class="h4"><strong>Task:</strong> To design a branding guide and a website for an attorney. To create a WordPress website with a custom theme out of the design.</p>
-							<p> </p>
-							
-							<h5 class="h6">Deliverables: </h5>
-							<ul>
-								<li>Website design</li>
-								<li>HTML / CSS / JavaScript</li>
-								<li>Full-fledged WordPress website</li>
-								<li>Branding guide for a related project</li>
-							</ul>
-							
-							<h5 class="h6">Challenges:</h5>
-							<p>Many designers "design" by selecting a popular WordPress theme and then customise it to look like the website really is custom. I don't blame them - a lot more work goes into creating a true custom WordPress website. So the challenge really is on the client: Will you buy a cheap coat from a hanger with 10 same coats or will you visit the seamstress and let her create something just perfect for your style and body type?</p>
-						</article>
-					</div>
-					</work>
 				</li>
 				<li>
 					<figure>
-						<a class="case bg-grey">
-							<img loading="lazy" width="320" src="img/inside-intersoft.png" alt="collage of web design art" />
-							<img loading="lazy" src="img/outside-intersoft.png" alt="collage of web design art" />
+						<a href="project-5.html">
+							<img loading="lazy" src="img/projects/project_05.webp" alt="WordPress themes project thumbnail" />
 						</a>
 						<figcaption>
-							<h3>WEBSITE REDESIGN</h3>
-							<p>Design, HTML/CSS</p>
+							<h3>ePower.ie website</h3>
+							<p>Design (lead designer) and WordPress development</p>
 						</figcaption>
 					</figure>
-					<work id="case4" class="bg-grey">
-					<a class="close-button" onClick="closeCase('case4')" title="Click to close this case study">
-						<svg width="14" height="14" viewBox="0 0 14 14">
-							<line x1="1" y1="1" x2="14" y2="14" />
-							<line x1="14" y1="1" x2="1" y2="14" />
-						</svg>
-					</a>
-					<div>
-						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/4802854/attachments/1500252/dribbble.png"/>
-						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/4802854/attachments/1079919/home_page.png" alt=" website UI/UX design"/>
-						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/4802854/attachments/1500253/dribbble.png" alt=" website UI/UX design"/>
-						
-						<article>
-							<a onClick="closeCase('case4')" class="close-case">Close this</a>
-							<h3 class="h6 yellow">Website Redesign</h3>
-							<h4 class="h2">Intersoft</h4>
-							 
-							<p class="h4"><strong>Task:</strong> to create a full redesign for an AI-focused software company.</p>
-							<p>I helped bring the company's brand to new life by freshening it up, cleaning the content into biteable pieces and making sure it's all sweet and fast under the hood!</p>
-							
-							<h5 class="h6">Deliverables: </h5>
-							<ul>
-								<li>Design</li>
-								<li>Copywriting</li>
-								<li>HTML / CSS on shared CodePen project</li>
-								<li>Modular design system</li>
-							</ul>
-							
-							<h5 class="h6">Challenges:</h5>
-							<ul>
-								<li>There was a lot of content on their outdated site. I played a role of a copywriter and a content strategist.</li>
-								<li>I prepared a set of reusable and combinable CSS classes so they can craft more pages with ease on their own.</li>
-								<li>There is not be a single photograph on the site. I used some sweet minimal illustrations and SVG shapes and brought it to life with CSS animations.</li>
-								
-							</ul>
-						</article>
-					</div>
-					</work>
 				</li>
 				<li>
 					<figure>
-						<a class="case bg-yellow">
-							<img loading="lazy" width="320" src="img/inside-insider.png" alt="collage of web design art" />
-							<img loading="lazy" src="img/outside-insider.png" alt="collage of web design art" />
+						<a href="project-6.html">
+							<img loading="lazy" src="img/projects/project_06.webp" alt="E-commerce project thumbnail" />
 						</a>
 						<figcaption>
-							<h3>WORDPRESS THEMES</h3>
-							<p>Design, HTML/CSS, WordPress</p>
+							<h3>ArtHaz.sk museum website</h3>
+							<p>Design and WordPress development</p>
 						</figcaption>
 					</figure>
-					<work id="case5" class="bg-yellow">
-					<a class="close-button" onClick="closeCase('case5')" title="Click to close this case study">
-						<svg width="14" height="14" viewBox="0 0 14 14">
-							<line x1="1" y1="1" x2="14" y2="14" />
-							<line x1="14" y1="1" x2="1" y2="14" />
-						</svg>
-					</a>
-					<div>
-						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/4844990/attachments/1088134/large.png" alt=" website UI/UX design"/>
-						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/4844990/attachments/1088135/home_page_copy_2.png" alt=" website UI/UX design"/>
-						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/3185345/attachments/678063/airy2-homepage.png" alt=" website UI/UX design"/>
-						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/3534214/attachments/1500290/dribbble.png" alt=" website UI/UX design"/>
-						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/2377518/attachments/457181/nylon-dribbble.jpg" alt=" website UI/UX design"/>
-						<article>
-							<a onClick="closeCase('case5')" class="close-case">Close this</a>
-							<h3 class="h6 pink">WordPress Themes</h3>
-							<h4 class="h2">Themes <em>&amp;</em> Templates</h4>
-							 
-							<p class="h4"><strong>Task:</strong> To design and code a WordPress theme from scratch and sell it commercially through ThemeForest to create a passive income for myself.</p>
-							<p>I've been creating templates and themes for a long time now. It is my safe space when I need a timeout from client projects. I sell these on Envato and enjoy the monthly income stream they create.</p>
-							
-							<h5 class="h6">Deliverables: </h5>
-							<ul>
-								<li>Full-fledged WordPress theme with a commercial appeal</li>
-								<li>Documentation for buyers</li>
-								<li>Marketing materials</li>
-							</ul>
-							
-							<h5 class="h6">Challenges:</h5>
-							<ul>
-								<li>The biggest challenge: how to create a theme that sells well, that is a good market fit and gets noticed.</li>
-								<li>It takes weeks to create a theme, so the second biggest challenge is automation and process.</li>
-								<li>Marketing is always tough for me. The least enjoyable part of creating a theme, I am thinking about delegating it to someone on a good-enough professional level.</li>
-							</ul>
-						</article>
-					</div>
-					</work>
 				</li>
 				<li>
 					<figure>
-						<a class="case bg-pink">
-							<img loading="lazy" width="320" src="img/inside-wallure.png" alt="collage of web design art" />
-							<img loading="lazy" src="img/outside-wallure.png" alt="collage of web design art" />
+						<a href="project-7.html">
+							<img loading="lazy" src="img/projects/project_07.webp" alt="Landing page and app project thumbnail" />
 						</a>
 						<figcaption>
-							<h3>E-COMMERCE</h3>
-							<p>Design, WooCommerce</p>
+							<h3>Various templates for sale</h3>
+							<p>Design and HTML/WordPress development</p>
 						</figcaption>
 					</figure>
-					<work id="case6" class="bg-pink">
-					<a class="close-button" onClick="closeCase('case6')" title="Click to close this case study">
-						<svg width="14" height="14" viewBox="0 0 14 14">
-							<line x1="1" y1="1" x2="14" y2="14" />
-							<line x1="14" y1="1" x2="1" y2="14" />
-						</svg>
-					</a>
-					<div>
-						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/4894488/attachments/1500286/home_page.png" alt=" website UI/UX design"/>
-						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/4894488/attachments/1500287/product_page.png" alt=" website UI/UX design"/>
-						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/4894488/attachments/1500288/where_to_buy.png" alt=" website UI/UX design"/>
-						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/4894488/attachments/1500289/blog.png" alt=" website UI/UX design"/>
-						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/4894488/attachments/1500285/wallure.png" alt=" website UI/UX design"/>
-						<article>
-							<a onClick="closeCase('case6')" class="close-case">Close this</a>
-							<h3 class="h6 yellow">E-commerce</h3>
-							<h4 class="h2">Wallure</h4>
-							 
-							<p class="h4"><strong>Task:</strong> Completely redesign an e-commerce store for a wall paneling manufacturer.</p>
-							<p>For this project I partnered with a great developer Ivetka Tonhauserova and we designed and developed a whole new store for the company.</p>
-							
-							<h5 class="h6">Deliverables: </h5>
-							<ul>
-								<li>Design direction & branding</li>
-								<li>New design of the whole store</li>
-								<li>Switch from Magento to WooCommerce</li>
-								<li>Multi-lang, multi-currency</li>
-							</ul>
-							
-							<h5 class="h6">Challenges:</h5>
-							<ul>
-								<li>As this was a large-scale project, we closely worked with our client in incremental steps. This was to ensure large changes were not required after we moved to another stage.</li>
-								<li>The client was confused about how he wanted to represent multiple languages on his store, so we presented several options and laid out the pros and cons of every solution.</li>
-								<li>The design was highly custom, so developing it for WooCommerce took time.</li>
-							</ul>
-						</article>
-					</div>
-					</work>
 				</li>
 				<li>
 					<figure>
-						<a class="case bg-violet">
-							<img loading="lazy" width="320" src="img/inside-honeycomb.png" alt="collage of web design art" />
-							<img loading="lazy" src="img/outside-honeycomb.png" alt="collage of web design art" />
+						<a href="project-8.html">
+							<img loading="lazy" src="img/projects/project_08.webp" alt="Landing page and app project thumbnail" />
 						</a>
 						<figcaption>
-							<h3>LANDING PAGE <em>&amp;</em> APP</h3>
-							<p>Style Guide, UI/UX</p>
+							<h3>SaaS landing page</h3>
+							<p>Design (lead designer)</p>
 						</figcaption>
 					</figure>
-					<work id="case7" class="bg-violet">
-					<a class="close-button" onClick="closeCase('case7')" title="Click to close this case study">
-						<svg width="14" height="14" viewBox="0 0 14 14">
-							<line x1="1" y1="1" x2="14" y2="14" />
-							<line x1="14" y1="1" x2="1" y2="14" />
-						</svg>
-					</a>
-					<div>
-						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/6391554/attachments/1368465/dribbble.png" alt=" website UI/UX design"/>
-						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/6391554/attachments/1368466/desktop_v_2.0.png" alt=" website UI/UX design"/>
-						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/6339083/attachments/1357422/dribbble.png" alt=" website UI/UX design"/>
-						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/6498938/attachments/1389698/dribbble.png" alt=" website UI/UX design"/>
-						<article>
-							<a onClick="closeCase('case7')" class="close-case">Close this</a>
-							<h3 class="h6 yellow">Landing Page <em>&amp;</em> App</h3>
-							<h4 class="h2">Honeycomb</h4>
-							 
-							<p class="h4"><strong>Task:</strong> To design a landing page and a web app for a tax return service. To make tax returns fun.</p>
-							<p>I loved designing this project as I got a lot of freedom from the founders. This is simply one of those feel-good projects that you just enjoy working on.</p>
-							
-							<h5 class="h6">Deliverables: </h5>
-							<ul>
-								<li>Design direction</li>
-								<li>Landing page in Figma</li>
-								<li>Style guide</li>
-								<li>Desktop app UI/UX in Figma</li>
-							</ul>
-							
-							<h5 class="h6">Challenges:</h5>
-							<p>When you get a complete freedom in design direction, sometimes you end up just... going in the wrong direction. First draft of the landing page was "too cute" for the client. I realised we could use a style guide to show just enough of elements to confirm the design direction. After I created that and client felt it's right, it was a breeze creating all the screens.</p>
-						</article>
-					</div>
-					</work>
+				</li>
+				<li>
+					<figure>
+						<a href="project-9.html">
+							<img loading="lazy" src="img/projects/project_09.webp" alt="Landing page and app project thumbnail" />
+						</a>
+						<figcaption>
+							<h3>Fratch.io website</h3>
+							<p>Design (lead designer)</p>
+						</figcaption>
+					</figure>
+				</li>
+				<li>
+					<figure class="wide">
+						<a href="project-10.html">
+							<img loading="lazy" src="img/projects/project_10.webp" alt="Landing page and app project thumbnail" />
+						</a>
+						<figcaption>
+							<h3>Intersoft website</h3>
+							<p>Design and HTML development</p>
+						</figcaption>
+					</figure>
 				</li>
 			</ul>
 		</works>
 		
 				
-		<tiles id="about">
-			<div>
-				<p class="pink">Star Service</p>
-				<h2>Website Design</h2>
-				<p class="h4">From one-pagers to&nbsp;big shops</p>
-			</div>
-			
-			<div class="bg-purple">
-				<ul class="h4">
-					<li>Landing pages</li>
-					<li>One-pagers</li>
-					<li>Company websites</li>
-					<li>E-commerce</li>
-					<li>Web apps</li>
-				</ul>
-			</div>
-			
-			<div class="bg-black">
-				<h2 class="white h6">WHAT I WORK WITH</h2>
-				<img loading="lazy" width="240" src="img/tools.png" alt="Tools for webdesign: Figma, Adobe XD, Adobe Photoshop, Webflow, HTML, CSS, IavaScript, WordPress, WooCommerce" />
-			</div>
-			
-			<div>
-				<img loading="lazy" src="img/elite.png" alt="Part of Envato Elite author's group" />
-				<p class="pink">Theme Development</p>
-				<h2>WordPress</h2>
-				<p class="h4">Creating websites and themes for&nbsp;WordPress from scratch</p>
-			</div>
-			
-			<div class="bg-pink">
-				<h2 class="h6">Process & Deliverables</h2>
-				<ul class="white h5">
-					<li>Moodboards for design direction</li>
-					<li>Wireframes & content structure</li>
-					<li>Creative copywriting</li>
-					<li>Design for conversion</li>
-				</ul>
-			</div>
-			
-			<div class="bg-violet">
-				<h2 class="white h6">Motto:</h2> 	 
-				<p class="white h4">”Intuition gets better with experience.”</p>
-			</div>
-			
-			<div class="bg-grey">
-				<h2 class="purple h6">Contact me</h2>
-
-				<p class="h5"><a href="mailto:dtyrpak@gmail.com">dtyrpak@gmail.com</a></p>
-				
-				<address class="white">Ing. Darina Kostelníková <br />
-				Park duklianskych obetí 4 <br />
-				040 01 Košice <br />
-				Slovak republic</address>
-				
-				<address class="white">IČO: 43656838 <br />
-				DIČ: 1077266575</address>
-			</div>
-			
-		</tiles>
-		
-		<me>
-			<div><img loading="lazy" width="400" src="img/darinka.png" alt="Darinka standing and smiling" /></div>
-		</me>
-		
 		<about>
-			<h3 class="h4">Well, hello there!</h3>
+			<div class="est-marker" aria-label="Established 2006">
+				<span></span>
+				<img loading="lazy" src="img/est.svg" alt="EST. 2006" />
+				<span></span>
+			</div>
+			<figure>
+				<img loading="lazy" src="img/portrait.webp" alt="Family portraits" />
+				<figcaption>Me and my family</figcaption>
+			</figure>
+			
+			<div>
+				<h2>Get to know me</h2>
 
-			<p>My name is Darinka and I am a professional webdesigner with <strong>13+ years of experience</strong>. After getting my Master's Degree in Computer Science in 2007, I've worked on <strong>100+ projects</strong> for small and medium-sized businesses and designed and developed websites for WordPress & WooCommerce, Drupal, Magento and various custom platforms. </p>
+				<p class="large">My name is Darina Kostelníková <br />
+					and I am your independent web designer. </p>
 
-			<p>I am an <strong>Elite author</strong> on ThemeForest with more than 2500 happy customers, having sold more than $75,000 in WordPress themes. I appeared in 3 issues of "net magazine", a printed magazine for web designers. Web design is my second nature and my <strong>dream job</strong>. </p>
+				<p>After getting my Master's Degree in Computer Science in 2007, I've worked on <strong>100+ projects for small to giant-sized businesses</strong>. </p>
 
-			<p>I live in Slovakia with my husband and baby girl. When I'm not designing, I enjoy biking, dancing, hosting friends & family and playing 8-ball.</p>
+				<p>I am an <strong>Elite author</strong> on ThemeForest with more than 2500 <strong>happy customers</strong>, having sold more than $75,000 in WordPress themes. I&nbsp;appeared in 3 issues of <strong>"net magazine"</strong>, a printed magazine for web designers. </p>
+
+				<p>Web design is my second nature and my dream job. I live in Slovakia with my husband, daughter and our doggie.</p>
+
+				<p><a href="mailto:dtyrpak@gmail.com">👋 Write me an email</a></p>
+			</div>
 		</about>
-		
-		<blog id="blog">
-			<h3 class="h6 pink">THOUGHTS &amp; IDEAS</h3>
-			<excerpts>
-				
 
-				<h4 class="h6">💡 BUSINESS GOALS</h4>
-				<h6 class="h3"><a href="https://medium.com/@darinka/conversion-designer-a-new-kind-of-web-designer-3654b3f6caa1" target="_blank">Conversion designer. A new kind of web designer</a></h6>
-				
-				<h4 class="h6">🎨 WEB DESIGN</h4>
-				<h6 class="h3"><a href="https://medium.com/@darinka/stock-photography-is-not-dead-but-it-should-be-ff2ec13b5c40" target="_blank">Stock photography on your website — yes or no?</a></h6>
-				
-				<h4 class="h6">🎨 WEB DESIGN</h4>
-				<h6 class="h3"><a href="https://medium.com/@darinka/i-dont-get-your-design-debate-over-illustration-trends-in-hero-images-46fac10d523b" target="_blank">I don't get your design! Debate over hero illustrations</a></h6>
-			</excerpts>
-			<p><a href="https://medium.com/@darinka" target="_blank">My Medium page</a></p>
-		</blog>
+		<testimonials>
+			<article>
+				<div class="testimonial-avatar"><img src="img/testimonial_1.webp" alt="Photo of a person who gave a testimonials" /></div>
+				<p class="stars" aria-label="5 out of 5 stars"><svg width="17" height="16" aria-hidden="true"><use href="#icon-star"></use></svg><svg width="17" height="16" aria-hidden="true"><use href="#icon-star"></use></svg><svg width="17" height="16" aria-hidden="true"><use href="#icon-star"></use></svg><svg width="17" height="16" aria-hidden="true"><use href="#icon-star"></use></svg><svg width="17" height="16" aria-hidden="true"><use href="#icon-star"></use></svg></p>
+				<blockquote>Darinka is a talented designer and a pleasure to work with. I have hired her for two projects so far and I look forward to working with her on many more to come.</blockquote>
+				<p class="testimonial-author">Evan Rosenfeld</p>
+			</article>
+			<article>
+				<div class="testimonial-avatar"><img src="img/testimonial_2.webp" alt="Photo of a person who gave a testimonials" /></div>
+				<p class="stars" aria-label="5 out of 5 stars"><svg width="17" height="16" aria-hidden="true"><use href="#icon-star"></use></svg><svg width="17" height="16" aria-hidden="true"><use href="#icon-star"></use></svg><svg width="17" height="16" aria-hidden="true"><use href="#icon-star"></use></svg><svg width="17" height="16" aria-hidden="true"><use href="#icon-star"></use></svg><svg width="17" height="16" aria-hidden="true"><use href="#icon-star"></use></svg></p>
+				<blockquote>The great designer Darinka combines an effective approach to modern web design, in which sensible visuals are combined with functional implementation.</blockquote>
+				<p class="testimonial-author">Ondrej Pastirik</p>
+			</article>
+			<article>
+				<div class="testimonial-avatar"><img src="img/testimonial_3.webp" alt="Photo of a person who gave a testimonials" /></div>
+				<p class="stars" aria-label="5 out of 5 stars"><svg width="17" height="16" aria-hidden="true"><use href="#icon-star"></use></svg><svg width="17" height="16" aria-hidden="true"><use href="#icon-star"></use></svg><svg width="17" height="16" aria-hidden="true"><use href="#icon-star"></use></svg><svg width="17" height="16" aria-hidden="true"><use href="#icon-star"></use></svg><svg width="17" height="16" aria-hidden="true"><use href="#icon-star"></use></svg></p>
+				<blockquote>Darinka was so fast and focused! She was there for me and made my life so much easier. Her creations are smooth, simple and clean, exactly my style.</blockquote>
+				<p class="testimonial-author">Zuzana Stelbaska</p>
+			</article>
+			<article>
+				<div class="testimonial-avatar"><img src="img/testimonial_4.webp" alt="Photo of a person who gave a testimonials" /></div>
+				<p class="stars" aria-label="5 out of 5 stars"><svg width="17" height="16" aria-hidden="true"><use href="#icon-star"></use></svg><svg width="17" height="16" aria-hidden="true"><use href="#icon-star"></use></svg><svg width="17" height="16" aria-hidden="true"><use href="#icon-star"></use></svg><svg width="17" height="16" aria-hidden="true"><use href="#icon-star"></use></svg><svg width="17" height="16" aria-hidden="true"><use href="#icon-star"></use></svg></p>
+				<blockquote>We worked with Darinka as an agency. Our clients were always extremely satisfied, they liked the designs right from the get-go. She has a knack for it :)</blockquote>
+				<p class="testimonial-author">Lukas Cervenka</p>
+			</article>
+			<article>
+				<div class="testimonial-avatar"><img src="img/testimonial_5.webp" alt="Photo of a person who gave a testimonials" /></div>
+				<p class="stars" aria-label="5 out of 5 stars"><svg width="17" height="16" aria-hidden="true"><use href="#icon-star"></use></svg><svg width="17" height="16" aria-hidden="true"><use href="#icon-star"></use></svg><svg width="17" height="16" aria-hidden="true"><use href="#icon-star"></use></svg><svg width="17" height="16" aria-hidden="true"><use href="#icon-star"></use></svg><svg width="17" height="16" aria-hidden="true"><use href="#icon-star"></use></svg></p>
+				<blockquote>Excellent work ethic.<br />	 Talented web developer. Known her for more than 7 years now. Hire her.</blockquote>
+				<p class="testimonial-author">Richard Kohn</p>
+			</article>
+		</testimonials>
 
-		
-		<references>
-			<img loading="lazy" src="img/references.png" width="886" alt="Logos of companies I worked with" />
-		</references>
-		
+
+		<certifications>
+			<h2>My experience</h2>
+
+			<p class="certifications-label">Recognitions &amp; Certification</p>
+			<div class="certification-list">
+				<div class="certification-row primary">
+					<img class="cert-elite" loading="lazy" src="img/certs/elite.webp" alt="Envato Elite" />
+					<img class="cert-ux" loading="lazy" src="img/certs/ux_1.webp" alt="UX Design" />
+					<img class="cert-process" loading="lazy" src="img/certs/process.webp" alt="Process Masterclass" />
+					<p class="cert-note">Certified<br />Completion</p>
+				</div>
+				<div class="certification-row secondary">
+					<img class="cert-google" loading="lazy" src="img/certs/google_career_cert.webp" alt="Google Career Certificates" />
+					<p>UX Design<br />Certified<br />Completion</p>
+					<p>Fundamentals<br />of Digital Marketing<br />Certified Completion</p>
+					<img class="cert-net" loading="lazy" src="img/certs/featured_net.webp" alt="Featured in net magazine" />
+				</div>
+			</div>
+
+			<p class="certifications-label">Working with</p>
+			<div class="tools-list">
+				<img loading="lazy" src="img/tools/figma_2x.webp" alt="Figma" />
+				<img loading="lazy" src="img/tools/framer_2x.webp" alt="Framer" />
+				<img loading="lazy" src="img/tools/wordpress_2x.webp" alt="WordPress" />
+				<img loading="lazy" src="img/tools/html_2x.webp" alt="HTML, CSS and JavaScript" />
+				<img loading="lazy" src="img/tools/php_2x.webp" alt="PHP" />
+				<img loading="lazy" src="img/tools/git_2x.webp" alt="Git" />
+				<p>and anything<br />in between...</p>
+			</div>
+		</certifications>
+
 		<end>
 			&nbsp;
 		</end>
@@ -736,11 +277,10 @@ body.horizontal main > end { min-width: 0; padding-left: 0; }
 	<footer>
 		<nav>
 			<ul>
-				<li><a href="http://www.twitter.com/darinka_design" target="_blank">Twitter</a></li>
-				<li><a href="http://www.dribbble.com/darinka" target="_blank">Dribbble</a></li>
-				<li><a href="http://www.instagram.com/darinka_design" target="_blank">Instagram</a></li>
+				<li><a href="https://x.com/DarinaKostelnik" target="_blank" rel="noopener noreferrer">Twitter/X</a></li>
+				<li><a href="https://www.dribbble.com/darinka" target="_blank" rel="noopener noreferrer">Dribbble</a></li>
+				<li><a href="https://www.linkedin.com/in/darina-kostelnikova/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
 				<li><a href="mailto:dtyrpak@gmail.com">Email</a></li>
-				<li><a onClick="goBack()" class="pink"><span>&larr;</span> Go back</a></li>
 			</ul>
 		</nav>
 	</footer>
@@ -748,338 +288,7 @@ body.horizontal main > end { min-width: 0; padding-left: 0; }
 </div><!-- #layoutbox -->
 
 
-<script>
-/* menu modal */
-var openmenu = document.querySelector('[data-action="open-menu"]');
-var closemenu = document.querySelector('[data-action="close-menu"]');
-var menu = document.querySelector('overlay');
-openmenu.addEventListener('click', function(event) { 
-	document.body.classList.toggle('open-menu');	
-});
-closemenu.addEventListener('click', function(event) { 
-	document.body.classList.remove('open-menu');	
-});
-var menuinmenu = document.querySelector('overlay ul');
-menuinmenu.addEventListener('click', function(event) { 
-	document.body.classList.remove('open-menu');	
-});
-
-/* open case study */
-var openWork = document.querySelectorAll('.case');
-for (let i = 0; i < openWork.length; i++) {
-     openWork[i].addEventListener("click", function() {
-       	openWork[i].parentNode.nextElementSibling.classList.toggle('open-case');
-     });
-}
-
-/* close case study */
-function closeCase(workToClose) {
-	event.preventDefault();
-	workToClose = document.getElementById(workToClose);
-	
-	/* get coordinates */
-	workPos = workToClose.getBoundingClientRect();
-	workPosX = workPos.x + window.scrollX;
-	workPosY = workPos.y + window.scrollY;
-	
-	/* close work */
-	workToClose.classList.toggle('open-case');
-	
-	/* scroll back to that case thumb */
-	if ( window.innerWidth > 1024 ) {
-		workPosY = 0;
-	}
- 
-	window.scrollTo({ left: workPosX, top: workPosY, behavior: 'smooth' });
-}
-
-/* link in menu pointing to inner sections of the page */
-var menu_links = document.querySelectorAll('#menu a');
-
-for (let i = 0; i < menu_links.length; i++) {
-	
-	menu_links[i].addEventListener("click", function() { 
-		event.preventDefault();
-		
-		/* what link was clicked? */
-		var pointingTo = menu_links[i].getAttribute('href');
-		
-		/* what are the coordinates of that section? */ 
-		var sectionPos = document.querySelector(pointingTo).getBoundingClientRect();
-		sectionPosX = sectionPos.x + window.scrollX;
-		sectionPosY = sectionPos.y + window.scrollY;
-		if ( window.innerWidth > 1024 ) {
-			sectionPosY = 0;
-		}
-		
-		/* scroll there */
-		window.scroll({ left: sectionPosX, top: sectionPosY, behavior: 'smooth' });
-	});
-}
-
-/* back button */
-function goBack() {
-	window.scrollTo({ left: 0, top: 0, behavior: 'smooth' });
-}
-  
-/*
-scrollConverter 1.0.2
-https://github.com/koggdal/scroll-converter
-Copyright 2011–2017 Johannes Koggdal (http://koggdal.com/)
-Developed for BombayWorks (http://bombayworks.com/)
-Released under MIT license
-*/
-
-
-window.scrollConverter = (function (window, document, undefined) {
-
-	// Private vars
-	var docElem = document.documentElement,
-		active = false,
-		hasDeactivated = false,
-		eventsBound = false;
-
-	var mouseWheelHandler;
-	var scrollHandler;
-
-	// Private methods
-	var scrollCallback = function (offset, event, callback) {
-
-			// Abort the scrolling if it's inactive
-			if (!active) {
-				return true;
-			}
-
-			var delta, numPixelsPerStep, change, newOffset,
-				docOffset, scrollWidth, winWidth, maxOffset;
-
-			// Set scrolling parameters
-			delta = 0;
-			numPixelsPerStep = 10;
-
-			// Find the maximum offset for the scroll
-			docOffset = (docElem ? docElem.offsetWidth : 0) || 0;
-			scrollWidth = document.body.scrollWidth || 0;
-			winWidth = docElem ? docElem.clientWidth : 0;
-			maxOffset = Math.max(docOffset, scrollWidth) - winWidth;
-
-			// Chrome and Safari seem to get interference when scrolling horizontally
-			// with a trackpad, so if the scroll is horizontal we just ignore it here
-			// and let the browser scroll like normal. These properties don't exist in
-			// all browsers, but it also seems to work fine in other browsers, so this
-			// is fine.
-			if (Math.abs(event.wheelDeltaX) > Math.abs(event.wheelDeltaY)) {
-				return true;
-			}
-
-			// "Normalize" the wheel value across browsers
-			//  The delta value after this will not be the same for all browsers.
-			//  Instead, it is normalized in a way to try to give a pretty similar feeling in all browsers.
-			// 
-			//  Firefox and Opera
-			if (event.detail) {
-				delta = event.detail * -240;
-			}
-			// IE, Safari and Chrome
-			else if (event.wheelDelta) {
-				delta = event.wheelDelta * 5;
-			}
-
-			// Get the real offset change from the delta
-			//  A positive change is when the user scrolled the wheel up (in regular scrolling direction)
-			//  A negative change is when the user scrolled the wheel down
-			change = delta / 120 * numPixelsPerStep;
-			newOffset = offset.x - change;
-
-			// Do the scroll if the new offset is positive
-			if (newOffset >= 0 && newOffset <= maxOffset) {
-				offset.x = newOffset;
-				offset.setByScript = true;
-				window.scrollTo(offset.x, offset.y);
-			}
-			// Keep the offset within the boundaries
-			else if (offset.x !== 0 && offset.x !== maxOffset) {
-				offset.x = newOffset > maxOffset ? maxOffset : 0;
-				offset.setByScript = true;
-				window.scrollTo(offset.x, offset.y);
-			}
-
-			// Fire the callback
-			if (typeof callback === "function") {
-				callback(offset);
-			}
-
-			return false;
-		},
-
-		getOffset = function (axis) {
-			axis = axis.toUpperCase();
-			var pageOffset = "page" + axis + "Offset",
-				scrollValue = "scroll" + axis,
-				scrollDir = "scroll" + (axis === "X" ? "Left" : "Top");
-
-			// Get the scroll offset for all browsers
-			return window[pageOffset] || window[scrollValue] || (function () {
-				var rootElem = document.documentElement || document.body.parentNode;
-				return ((typeof rootElem[scrollDir] === "number") ? rootElem : document.body)[scrollDir];
-			}());
-		},
-
-		bindEvents = function (offset, cb) {
-
-			var callback = function (e) {
-
-					// Fix event object for IE8 and below
-					e = e || window.event;
-
-					// Trigger the scroll behavior
-					var shouldPreventDefault = scrollCallback(offset, e, cb) === false;
-
-					// Prevent the normal scroll action to happen
-					if (shouldPreventDefault) {
-						if (e.preventDefault && e.stopPropagation) {
-							e.preventDefault();
-							e.stopPropagation();
-						} else {
-							return false;
-						}
-					}
-				},
-
-				updateOffsetOnScroll = function () {
-
-					// Update the offset variable when the normal scrollbar is used
-					if (!offset.setByScript) {
-						offset.x = getOffset("x");
-						offset.y = getOffset("y");
-					}
-					offset.setByScript = false;
-				};
-
-			mouseWheelHandler = callback;
-			scrollHandler = updateOffsetOnScroll;
-
-			// Safari, Chrome, Opera, IE9+
-			if (window.addEventListener) {
-
-				// Safari, Chrome, Opera, IE9
-				if ("onmousewheel" in window) {
-					window.addEventListener("mousewheel", mouseWheelHandler, false);
-					window.addEventListener("scroll", scrollHandler, false);
-				}
-				// Firefox
-				else {
-					window.addEventListener("DOMMouseScroll", mouseWheelHandler, false);
-					window.addEventListener("scroll", scrollHandler, false);
-				}
-			}
-			// IE8 and below
-			else {
-				document.attachEvent("onmousewheel", mouseWheelHandler);
-				window.attachEvent("onscroll", scrollHandler);
-			}
-		},
-
-		unbindEvents = function () {
-			if (!mouseWheelHandler && !scrollHandler) return;
-
-			// Safari, Chrome, Opera, IE9+
-			if (window.removeEventListener) {
-
-				// Safari, Chrome, Opera, IE9
-				if ("onmousewheel" in window) {
-					window.removeEventListener("mousewheel", mouseWheelHandler, false);
-					window.removeEventListener("scroll", scrollHandler, false);
-				}
-				// Firefox
-				else {
-					window.removeEventListener("DOMMouseScroll", mouseWheelHandler, false);
-					window.removeEventListener("scroll", scrollHandler, false);
-				}
-			}
-			// IE8 and below
-			else {
-				document.detachEvent("onmousewheel", mouseWheelHandler);
-				window.detachEvent("onscroll", scrollHandler);
-			}
-		},
-
-		deactivateScrolling = function (e) {
-			e.preventDefault();
-			e.stopPropagation();
-			return false;
-		};
-
-	// Return a public API
-	return {
-
-		// Activate the scrolling switch
-		//  An optional callback can be passed in, which will fire at every scroll update
-		activate: function (callback) {
-
-			// Set state
-			active = true;
-
-			// Bind events if it hasn't been done before
-			if (!eventsBound) {
-				var offset = { x: 0, y: 0 };
-				bindEvents(offset, callback);
-				eventsBound = true;
-			}
-
-			// Remove event handlers if it was previously deactivated
-			if (hasDeactivated) {
-				if (window.addEventListener) {
-					window.removeEventListener("scroll", deactivateScrolling, true);
-				} else {
-					window.detachEvent("onscroll", deactivateScrolling);
-				}
-				hasDeactivated = false;
-			}
-		},
-
-		deactivate: function () {
-			active = false;
-
-			if (eventsBound) {
-				unbindEvents();
-				eventsBound = false;
-			}
-		},
-
-		deactivateAllScrolling: function () {
-
-			// Set state
-			active = false;
-			hasDeactivated = true;
-
-			// Bind event handlers to disable the scroll
-			if (window.addEventListener) {
-				window.addEventListener("scroll", deactivateScrolling, true);
-			} else {
-				window.attachEvent("onscroll", deactivateScrolling);
-			}
-		}
-	};
-}(window, document));
-
-makehorizontal();
-
-function makehorizontal() {
-	if ( window.innerWidth > 1024) {
-		document.body.classList.add('horizontal');
-		scrollConverter.activate();
-	}
-	else {
-		document.body.classList.remove('horizontal');
-		scrollConverter.deactivate();
-	}
-}
-
-window.addEventListener("resize", function(){
-	makehorizontal();
-});
-</script>
+<script src="scripts.js"></script>
 
 </body>
 </html>

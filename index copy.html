@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+
+	<title>Darinka: UI/UX Designer</title>
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, minimum-scale=1" />
+
+	<link rel="stylesheet" href="style.css" />
+</head> 
+
+<body>
+
+<div id="layoutbox">
+	<header>
+		<h1 class="logo"><img src="img/logo.png" alt="Darinka - signature" /></h1>
+		<p class="header-title">Senior Freelance Web Designer</p>
+		<address>
+			<a class="button header-email" href="mailto:dtyrpak@gmail.com">dtyrpak@gmail.com</a>
+		</address>
+		<nav>
+			<a data-action="open-menu" title="Click to open menu">
+				<svg width="24" height="24" viewBox="0 0 24 24">
+					<line x1="2" y1="1" x2="24" y2="1" />
+					<line x1="1" y1="7" x2="24" y2="7" />
+					<line x1="7" y1="13" x2="24" y2="13" />
+				</svg>
+			</a>
+			<overlay>
+				<a data-action="close-menu" title="Click to close menu">
+					<svg width="14" height="14" viewBox="0 0 14 14">
+						<line x1="1" y1="1" x2="14" y2="14" />
+						<line x1="14" y1="1" x2="1" y2="14" />
+					</svg>
+				</a>
+				<ul id="menu">
+					<li><a href="#works">Works</a></li>
+					<li><a href="#about">About</a></li>
+					<li><a href="#blog">Blog</a></li>
+				</ul>
+			</overlay>
+		</nav>
+	</header>
+	
+	
+	<main>
+		<welcome>
+			<img class="welcome-avatar" src="img/avatar.webp" alt="Darina Kostelníková" />
+			<h1>Your web design<br />in&nbsp;good hands</h1>
+			<p>Top-tier design solutions for companies and agencies.<br />
+				15+ years of experience as a UI/UX designer &amp; developer.</p>
+			<p class="project-prompt">
+				<span>Scroll ⟶ to see</span> <a href="#works">featured projects</a>
+			</p>
+						
+		</welcome>
+		
+		<works id="works">
+			<ul>
+				<li>
+					<figure>
+						<a class="case bg-pink">
+							<img loading="lazy" src="img/inside-watertaps.png" alt="collage of web design art" />
+							<img loading="lazy" src="img/outside-watertaps.png" alt="collage of web design art" />
+						</a>
+						<figcaption>
+							<h3>WEBSITE <em>&amp;</em> MOBILE APP</h3>
+							<p>Design, Branding, Illustration</p>
+						</figcaption>
+					</figure>
+					<work id="case1" class="bg-pink">
+					<a class="close-button" onClick="closeCase('case1')" title="Click to close this case study">
+						<svg width="14" height="14" viewBox="0 0 14 14">
+							<line x1="1" y1="1" x2="14" y2="14" />
+							<line x1="14" y1="1" x2="1" y2="14" />
+						</svg>
+					</a>
+					<div>
+						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/8861471/media/957fcc6bd0f649cc6443a8f3fe9c52d2.png" alt="Water refill website UI/UX design"/>
+						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/8861471/media/efe9dfb7bf3593cc608e762f083fe74e.png" alt="Water refill website UI/UX design"/>
+						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/8861471/media/908548f9ec13145dd5e44f7ce03525fc.jpg" alt="Water refill website UI/UX design"/>
+						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/8861471/media/115973cf89ed3a4741c091262236f4a1.png" alt="Water refill website UI/UX design"/>
+						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/8861471/media/ebf735cdbcdb1a9a95ffdf4b9059ffad.jpg" alt="Water refill website UI/UX design"/>
+						<article>
+							<a onClick="closeCase('case1')" class="close-case" title="Click to close this case study">Close this</a>
+							<h3 class="h6 yellow">Website <em>&amp;</em> Mobile App</h3>
+							<h4 class="h2">WaterTaps</h4>
+							 
+							<p class="h4"><strong>Task:</strong> To design landing pages with mobile & desktop app
+							for a company that navigates people to refill their reusable water bottles with free tap water.</p>
+							<p>A project good for the planet, WaterTaps was a dream to work on. I was honored to be such an integral part of it. </p>
+							
+							<h5 class="h6">Deliverables: </h5>
+							<ul>
+								<li>Design direction</li>
+								<li>Vector logo & branding for social media</li>
+								<li>Design of all landing pages in Figma</li>
+								<li>App's UI/UX for mobile and desktop in Figma</li>
+							</ul>
+							
+							<h5 class="h6">Challenges:</h5>
+							<ul>
+								<li>This was a larger project, as I was the main designer for everything. I felt a lot of responsibility, but also pride and joy when we finished.</li>
+								<li>A desktop app, where you have a lot of space, is different than it's mobile counterpart. Yet they still have to present the same. This was interesting and challenging to figure out.</li>
+								<li>A lot of illustrated graphics was needed for every landing page. I helped myself with a illustration library which let me compose all the images more easily.</li>
+							</ul>
+						</article>
+					</div>
+					</work>
+				</li>
+				<li>
+					<figure>
+						<a class="case bg-yellow">
+							<img loading="lazy" width="320" src="img/inside-reallist.png" alt="collage of web design art" />
+							<img loading="lazy" src="img/outside-reallist.png" alt="collage of web design art" />
+						</a>
+						<figcaption>
+							<h3>WEB APP</h3>
+							<p>UI/UX, Branding</p>
+						</figcaption>
+					</figure>
+					<work id="case2" class="bg-yellow">
+					<a class="close-button bg-pink" onClick="closeCase('case2')" title="Click to close this case study">
+						<svg width="14" height="14" viewBox="0 0 14 14">
+							<line x1="1" y1="1" x2="14" y2="14" />
+							<line x1="14" y1="1" x2="1" y2="14" />
+						</svg>
+					</a>
+					<div>
+						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/6743994/dribbble.png" alt=" website UI/UX design"/>
+						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/6743994/attachments/1440003/search.png" alt=" website UI/UX design"/>
+						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/6743994/attachments/1440004/leaderboard.png" alt=" website UI/UX design"/>
+						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/6743994/attachments/1440006/property.png" alt=" website UI/UX design"/>
+						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/6743994/attachments/1440012/investor_12.04.33.png" alt=" website UI/UX design"/>
+						<article>
+							<a onClick="closeCase('case2')" class="close-case">Close this</a>
+							<h3 class="h6 pink">Web App</h3>
+							<h4 class="h2">RealList</h4>
+							 
+							<p class="h4"><strong>Task:</strong> To design a real estate investors' social network as a proof of concept.  </p>
+							<p>This website would allow investors to connect to each other, scout properties and investments, and create funds. It was a fun project for me! I love doing anything that revolves around the world of real estate.</p>
+							
+							<h5 class="h6">Deliverables: </h5>
+							<ul>
+								<li>Design direction</li>
+								<li>Vector logo</li>
+								<li>UI/UX prototype in Adobe XD</li>
+							</ul>
+							
+							<h5 class="h6">Challenges:</h5>
+							<ul>
+								<li>Although I prefer Figma, it was very interesting designing in Adobe XD. Since the time I started with web design more than 10 years ago, the software changed a lot. I cannot emphasise enough how lucky we are to have the correct tools for the job.</li>
+								<li>I got only a few very basic wireframes from the client and my job was to craft that into a clean & modern-looking user interface.</li>
+							</ul>
+						</article>
+					</div>
+					</work>
+				</li>
+				<li>
+					<figure>
+						<a class="case bg-violet">
+							<img loading="lazy" width="320" src="img/inside-aksmihulova.png" alt="collage of web design art" />
+							<img loading="lazy" src="img/outside-aksmihulova.png" alt="collage of web design art" />
+						</a>
+						<figcaption>
+							<h3>BRANDING GUIDE <em>&amp;</em> WEBSITE</h3>
+							<p>Style Guide, Design, WordPress</p>
+						</figcaption>
+					</figure>
+					<work id="case3" class="bg-violet">
+					<a class="close-button" onClick="closeCase('case3')" title="Click to close this case study">
+						<svg width="14" height="14" viewBox="0 0 14 14">
+							<line x1="1" y1="1" x2="14" y2="14" />
+							<line x1="14" y1="1" x2="1" y2="14" />
+						</svg>
+					</a>
+					<div>
+						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/10720953/media/6729e4ec29b7a4aed9a0feced58b4195.png" alt=" website UI/UX design"/>
+						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/2366320/attachments/1500291/aksmihulova.sk_en_.png" alt=" website UI/UX design"/>
+						<article>
+							<a onClick="closeCase('case3')" class="close-case">Close this</a>
+							<h3 class="h6 yellow">Branding Guide <em>&amp;</em> Website</h3>
+							<h4 class="h2">AKSmihulova</h4>
+							 
+							<p class="h4"><strong>Task:</strong> To design a branding guide and a website for an attorney. To create a WordPress website with a custom theme out of the design.</p>
+							<p> </p>
+							
+							<h5 class="h6">Deliverables: </h5>
+							<ul>
+								<li>Website design</li>
+								<li>HTML / CSS / JavaScript</li>
+								<li>Full-fledged WordPress website</li>
+								<li>Branding guide for a related project</li>
+							</ul>
+							
+							<h5 class="h6">Challenges:</h5>
+							<p>Many designers "design" by selecting a popular WordPress theme and then customise it to look like the website really is custom. I don't blame them - a lot more work goes into creating a true custom WordPress website. So the challenge really is on the client: Will you buy a cheap coat from a hanger with 10 same coats or will you visit the seamstress and let her create something just perfect for your style and body type?</p>
+						</article>
+					</div>
+					</work>
+				</li>
+				<li>
+					<figure>
+						<a class="case bg-grey">
+							<img loading="lazy" width="320" src="img/inside-intersoft.png" alt="collage of web design art" />
+							<img loading="lazy" src="img/outside-intersoft.png" alt="collage of web design art" />
+						</a>
+						<figcaption>
+							<h3>WEBSITE REDESIGN</h3>
+							<p>Design, HTML/CSS</p>
+						</figcaption>
+					</figure>
+					<work id="case4" class="bg-grey">
+					<a class="close-button" onClick="closeCase('case4')" title="Click to close this case study">
+						<svg width="14" height="14" viewBox="0 0 14 14">
+							<line x1="1" y1="1" x2="14" y2="14" />
+							<line x1="14" y1="1" x2="1" y2="14" />
+						</svg>
+					</a>
+					<div>
+						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/4802854/attachments/1500252/dribbble.png"/>
+						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/4802854/attachments/1079919/home_page.png" alt=" website UI/UX design"/>
+						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/4802854/attachments/1500253/dribbble.png" alt=" website UI/UX design"/>
+						
+						<article>
+							<a onClick="closeCase('case4')" class="close-case">Close this</a>
+							<h3 class="h6 yellow">Website Redesign</h3>
+							<h4 class="h2">Intersoft</h4>
+							 
+							<p class="h4"><strong>Task:</strong> to create a full redesign for an AI-focused software company.</p>
+							<p>I helped bring the company's brand to new life by freshening it up, cleaning the content into biteable pieces and making sure it's all sweet and fast under the hood!</p>
+							
+							<h5 class="h6">Deliverables: </h5>
+							<ul>
+								<li>Design</li>
+								<li>Copywriting</li>
+								<li>HTML / CSS on shared CodePen project</li>
+								<li>Modular design system</li>
+							</ul>
+							
+							<h5 class="h6">Challenges:</h5>
+							<ul>
+								<li>There was a lot of content on their outdated site. I played a role of a copywriter and a content strategist.</li>
+								<li>I prepared a set of reusable and combinable CSS classes so they can craft more pages with ease on their own.</li>
+								<li>There is not be a single photograph on the site. I used some sweet minimal illustrations and SVG shapes and brought it to life with CSS animations.</li>
+								
+							</ul>
+						</article>
+					</div>
+					</work>
+				</li>
+				<li>
+					<figure>
+						<a class="case bg-yellow">
+							<img loading="lazy" width="320" src="img/inside-insider.png" alt="collage of web design art" />
+							<img loading="lazy" src="img/outside-insider.png" alt="collage of web design art" />
+						</a>
+						<figcaption>
+							<h3>WORDPRESS THEMES</h3>
+							<p>Design, HTML/CSS, WordPress</p>
+						</figcaption>
+					</figure>
+					<work id="case5" class="bg-yellow">
+					<a class="close-button" onClick="closeCase('case5')" title="Click to close this case study">
+						<svg width="14" height="14" viewBox="0 0 14 14">
+							<line x1="1" y1="1" x2="14" y2="14" />
+							<line x1="14" y1="1" x2="1" y2="14" />
+						</svg>
+					</a>
+					<div>
+						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/4844990/attachments/1088134/large.png" alt=" website UI/UX design"/>
+						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/4844990/attachments/1088135/home_page_copy_2.png" alt=" website UI/UX design"/>
+						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/3185345/attachments/678063/airy2-homepage.png" alt=" website UI/UX design"/>
+						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/3534214/attachments/1500290/dribbble.png" alt=" website UI/UX design"/>
+						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/2377518/attachments/457181/nylon-dribbble.jpg" alt=" website UI/UX design"/>
+						<article>
+							<a onClick="closeCase('case5')" class="close-case">Close this</a>
+							<h3 class="h6 pink">WordPress Themes</h3>
+							<h4 class="h2">Themes <em>&amp;</em> Templates</h4>
+							 
+							<p class="h4"><strong>Task:</strong> To design and code a WordPress theme from scratch and sell it commercially through ThemeForest to create a passive income for myself.</p>
+							<p>I've been creating templates and themes for a long time now. It is my safe space when I need a timeout from client projects. I sell these on Envato and enjoy the monthly income stream they create.</p>
+							
+							<h5 class="h6">Deliverables: </h5>
+							<ul>
+								<li>Full-fledged WordPress theme with a commercial appeal</li>
+								<li>Documentation for buyers</li>
+								<li>Marketing materials</li>
+							</ul>
+							
+							<h5 class="h6">Challenges:</h5>
+							<ul>
+								<li>The biggest challenge: how to create a theme that sells well, that is a good market fit and gets noticed.</li>
+								<li>It takes weeks to create a theme, so the second biggest challenge is automation and process.</li>
+								<li>Marketing is always tough for me. The least enjoyable part of creating a theme, I am thinking about delegating it to someone on a good-enough professional level.</li>
+							</ul>
+						</article>
+					</div>
+					</work>
+				</li>
+				<li>
+					<figure>
+						<a class="case bg-pink">
+							<img loading="lazy" width="320" src="img/inside-wallure.png" alt="collage of web design art" />
+							<img loading="lazy" src="img/outside-wallure.png" alt="collage of web design art" />
+						</a>
+						<figcaption>
+							<h3>E-COMMERCE</h3>
+							<p>Design, WooCommerce</p>
+						</figcaption>
+					</figure>
+					<work id="case6" class="bg-pink">
+					<a class="close-button" onClick="closeCase('case6')" title="Click to close this case study">
+						<svg width="14" height="14" viewBox="0 0 14 14">
+							<line x1="1" y1="1" x2="14" y2="14" />
+							<line x1="14" y1="1" x2="1" y2="14" />
+						</svg>
+					</a>
+					<div>
+						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/4894488/attachments/1500286/home_page.png" alt=" website UI/UX design"/>
+						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/4894488/attachments/1500287/product_page.png" alt=" website UI/UX design"/>
+						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/4894488/attachments/1500288/where_to_buy.png" alt=" website UI/UX design"/>
+						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/4894488/attachments/1500289/blog.png" alt=" website UI/UX design"/>
+						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/4894488/attachments/1500285/wallure.png" alt=" website UI/UX design"/>
+						<article>
+							<a onClick="closeCase('case6')" class="close-case">Close this</a>
+							<h3 class="h6 yellow">E-commerce</h3>
+							<h4 class="h2">Wallure</h4>
+							 
+							<p class="h4"><strong>Task:</strong> Completely redesign an e-commerce store for a wall paneling manufacturer.</p>
+							<p>For this project I partnered with a great developer Ivetka Tonhauserova and we designed and developed a whole new store for the company.</p>
+							
+							<h5 class="h6">Deliverables: </h5>
+							<ul>
+								<li>Design direction & branding</li>
+								<li>New design of the whole store</li>
+								<li>Switch from Magento to WooCommerce</li>
+								<li>Multi-lang, multi-currency</li>
+							</ul>
+							
+							<h5 class="h6">Challenges:</h5>
+							<ul>
+								<li>As this was a large-scale project, we closely worked with our client in incremental steps. This was to ensure large changes were not required after we moved to another stage.</li>
+								<li>The client was confused about how he wanted to represent multiple languages on his store, so we presented several options and laid out the pros and cons of every solution.</li>
+								<li>The design was highly custom, so developing it for WooCommerce took time.</li>
+							</ul>
+						</article>
+					</div>
+					</work>
+				</li>
+				<li>
+					<figure>
+						<a class="case bg-violet">
+							<img loading="lazy" width="320" src="img/inside-honeycomb.png" alt="collage of web design art" />
+							<img loading="lazy" src="img/outside-honeycomb.png" alt="collage of web design art" />
+						</a>
+						<figcaption>
+							<h3>LANDING PAGE <em>&amp;</em> APP</h3>
+							<p>Style Guide, UI/UX</p>
+						</figcaption>
+					</figure>
+					<work id="case7" class="bg-violet">
+					<a class="close-button" onClick="closeCase('case7')" title="Click to close this case study">
+						<svg width="14" height="14" viewBox="0 0 14 14">
+							<line x1="1" y1="1" x2="14" y2="14" />
+							<line x1="14" y1="1" x2="1" y2="14" />
+						</svg>
+					</a>
+					<div>
+						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/6391554/attachments/1368465/dribbble.png" alt=" website UI/UX design"/>
+						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/6391554/attachments/1368466/desktop_v_2.0.png" alt=" website UI/UX design"/>
+						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/6339083/attachments/1357422/dribbble.png" alt=" website UI/UX design"/>
+						<img loading="lazy" src="https://cdn.dribbble.com/users/31672/screenshots/6498938/attachments/1389698/dribbble.png" alt=" website UI/UX design"/>
+						<article>
+							<a onClick="closeCase('case7')" class="close-case">Close this</a>
+							<h3 class="h6 yellow">Landing Page <em>&amp;</em> App</h3>
+							<h4 class="h2">Honeycomb</h4>
+							 
+							<p class="h4"><strong>Task:</strong> To design a landing page and a web app for a tax return service. To make tax returns fun.</p>
+							<p>I loved designing this project as I got a lot of freedom from the founders. This is simply one of those feel-good projects that you just enjoy working on.</p>
+							
+							<h5 class="h6">Deliverables: </h5>
+							<ul>
+								<li>Design direction</li>
+								<li>Landing page in Figma</li>
+								<li>Style guide</li>
+								<li>Desktop app UI/UX in Figma</li>
+							</ul>
+							
+							<h5 class="h6">Challenges:</h5>
+							<p>When you get a complete freedom in design direction, sometimes you end up just... going in the wrong direction. First draft of the landing page was "too cute" for the client. I realised we could use a style guide to show just enough of elements to confirm the design direction. After I created that and client felt it's right, it was a breeze creating all the screens.</p>
+						</article>
+					</div>
+					</work>
+				</li>
+			</ul>
+		</works>
+		
+				
+		<tiles id="about">
+			<div>
+				<p class="pink">Star Service</p>
+				<h2>Website Design</h2>
+				<p class="h4">From one-pagers to&nbsp;big shops</p>
+			</div>
+			
+			<div class="bg-purple">
+				<ul class="h4">
+					<li>Landing pages</li>
+					<li>One-pagers</li>
+					<li>Company websites</li>
+					<li>E-commerce</li>
+					<li>Web apps</li>
+				</ul>
+			</div>
+			
+			<div class="bg-black">
+				<h2 class="white h6">WHAT I WORK WITH</h2>
+				<img loading="lazy" width="240" src="img/tools.png" alt="Tools for webdesign: Figma, Adobe XD, Adobe Photoshop, Webflow, HTML, CSS, IavaScript, WordPress, WooCommerce" />
+			</div>
+			
+			<div>
+				<img loading="lazy" src="img/elite.png" alt="Part of Envato Elite author's group" />
+				<p class="pink">Theme Development</p>
+				<h2>WordPress</h2>
+				<p class="h4">Creating websites and themes for&nbsp;WordPress from scratch</p>
+			</div>
+			
+			<div class="bg-pink">
+				<h2 class="h6">Process & Deliverables</h2>
+				<ul class="white h5">
+					<li>Moodboards for design direction</li>
+					<li>Wireframes & content structure</li>
+					<li>Creative copywriting</li>
+					<li>Design for conversion</li>
+				</ul>
+			</div>
+			
+			<div class="bg-violet">
+				<h2 class="white h6">Motto:</h2> 	 
+				<p class="white h4">”Intuition gets better with experience.”</p>
+			</div>
+			
+			<div class="bg-grey">
+				<h2 class="purple h6">Contact me</h2>
+
+				<p class="h5"><a href="mailto:dtyrpak@gmail.com">dtyrpak@gmail.com</a></p>
+				
+				<address class="white">Ing. Darina Kostelníková <br />
+				Park duklianskych obetí 4 <br />
+				040 01 Košice <br />
+				Slovak republic</address>
+				
+				<address class="white">IČO: 43656838 <br />
+				DIČ: 1077266575</address>
+			</div>
+			
+		</tiles>
+		
+		<me>
+			<div><img loading="lazy" width="400" src="img/darinka.png" alt="Darinka standing and smiling" /></div>
+		</me>
+		
+		<about>
+			<h3 class="h4">Well, hello there!</h3>
+
+			<p>My name is Darinka and I am a professional webdesigner with <strong>13+ years of experience</strong>. After getting my Master's Degree in Computer Science in 2007, I've worked on <strong>100+ projects</strong> for small and medium-sized businesses and designed and developed websites for WordPress & WooCommerce, Drupal, Magento and various custom platforms. </p>
+
+			<p>I am an <strong>Elite author</strong> on ThemeForest with more than 2500 happy customers, having sold more than $75,000 in WordPress themes. I appeared in 3 issues of "net magazine", a printed magazine for web designers. Web design is my second nature and my <strong>dream job</strong>. </p>
+
+			<p>I live in Slovakia with my husband and baby girl. When I'm not designing, I enjoy biking, dancing, hosting friends & family and playing 8-ball.</p>
+		</about>
+		
+		<blog id="blog">
+			<h3 class="h6 pink">THOUGHTS &amp; IDEAS</h3>
+			<excerpts>
+				
+
+				<h4 class="h6">💡 BUSINESS GOALS</h4>
+				<h6 class="h3"><a href="https://medium.com/@darinka/conversion-designer-a-new-kind-of-web-designer-3654b3f6caa1" target="_blank">Conversion designer. A new kind of web designer</a></h6>
+				
+				<h4 class="h6">🎨 WEB DESIGN</h4>
+				<h6 class="h3"><a href="https://medium.com/@darinka/stock-photography-is-not-dead-but-it-should-be-ff2ec13b5c40" target="_blank">Stock photography on your website — yes or no?</a></h6>
+				
+				<h4 class="h6">🎨 WEB DESIGN</h4>
+				<h6 class="h3"><a href="https://medium.com/@darinka/i-dont-get-your-design-debate-over-illustration-trends-in-hero-images-46fac10d523b" target="_blank">I don't get your design! Debate over hero illustrations</a></h6>
+			</excerpts>
+			<p><a href="https://medium.com/@darinka" target="_blank">My Medium page</a></p>
+		</blog>
+
+		
+		<references>
+			<img loading="lazy" src="img/references.png" width="886" alt="Logos of companies I worked with" />
+		</references>
+		
+		<end>
+			&nbsp;
+		</end>
+	</main>
+	
+	<footer>
+		<nav>
+			<ul>
+				<li><a href="https://x.com/DarinaKostelnik" target="_blank" rel="noopener noreferrer">Twitter/X</a></li>
+				<li><a href="https://www.dribbble.com/darinka" target="_blank" rel="noopener noreferrer">Dribbble</a></li>
+				<li><a href="https://www.linkedin.com/in/darina-kostelnikova/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+				<li><a href="mailto:dtyrpak@gmail.com">Email</a></li>
+			</ul>
+		</nav>
+	</footer>
+
+</div><!-- #layoutbox -->
+
+
+<script src="scripts.js"></script>
+
+</body>
+</html>
