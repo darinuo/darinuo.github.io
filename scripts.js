@@ -18,14 +18,22 @@ var menu_links = document.querySelectorAll('#menu a');
 
 for (let i = 0; i < menu_links.length; i++) {
 	
-	menu_links[i].addEventListener("click", function() { 
-		event.preventDefault();
-		
+	menu_links[i].addEventListener("click", function(event) {
 		/* what link was clicked? */
 		var pointingTo = menu_links[i].getAttribute('href');
+		if (!pointingTo || pointingTo.charAt(0) !== '#') {
+			return;
+		}
+
+		var targetSection = document.querySelector(pointingTo);
+		if (!targetSection) {
+			return;
+		}
+
+		event.preventDefault();
 		
 		/* what are the coordinates of that section? */ 
-		var sectionPos = document.querySelector(pointingTo).getBoundingClientRect();
+		var sectionPos = targetSection.getBoundingClientRect();
 		sectionPosX = sectionPos.x + window.scrollX;
 		sectionPosY = sectionPos.y + window.scrollY;
 		if ( window.innerWidth > 1024 ) {
