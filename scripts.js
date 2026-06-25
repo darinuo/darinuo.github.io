@@ -187,12 +187,12 @@ window.scrollConverter = (function (window, document, undefined) {
 
 				// Safari, Chrome, Opera, IE9
 				if ("onmousewheel" in window) {
-					window.addEventListener("mousewheel", mouseWheelHandler, false);
+					window.addEventListener("mousewheel", mouseWheelHandler, { passive: false });
 					window.addEventListener("scroll", scrollHandler, false);
 				}
 				// Firefox
 				else {
-					window.addEventListener("DOMMouseScroll", mouseWheelHandler, false);
+					window.addEventListener("DOMMouseScroll", mouseWheelHandler, { passive: false });
 					window.addEventListener("scroll", scrollHandler, false);
 				}
 			}
@@ -211,12 +211,12 @@ window.scrollConverter = (function (window, document, undefined) {
 
 				// Safari, Chrome, Opera, IE9
 				if ("onmousewheel" in window) {
-					window.removeEventListener("mousewheel", mouseWheelHandler, false);
+					window.removeEventListener("mousewheel", mouseWheelHandler, { passive: false });
 					window.removeEventListener("scroll", scrollHandler, false);
 				}
 				// Firefox
 				else {
-					window.removeEventListener("DOMMouseScroll", mouseWheelHandler, false);
+					window.removeEventListener("DOMMouseScroll", mouseWheelHandler, { passive: false });
 					window.removeEventListener("scroll", scrollHandler, false);
 				}
 			}
